@@ -23,4 +23,4 @@ doc/
 config/database.yml
 
 # Set up a file for environment variables
-config/initializers/environment_variables.rb
+config/initializers/_environment_variables.rb
