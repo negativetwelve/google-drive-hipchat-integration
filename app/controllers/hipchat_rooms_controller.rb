@@ -13,6 +13,10 @@ class HipchatRoomsController < ApplicationController
     end
   end
 
+  def show
+    @hipchat_room = HipchatRoom.find(params[:id])
+  end
+
   private
 
     def hipchat_room_params

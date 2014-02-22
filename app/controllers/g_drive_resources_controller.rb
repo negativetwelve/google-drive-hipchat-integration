@@ -13,6 +13,10 @@ class GDriveResourcesController < ApplicationController
     end
   end
 
+  def show
+    @resource = GDriveResource.find(params[:id])
+  end
+
   private
 
     def g_drive_resource_params

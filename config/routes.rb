@@ -3,6 +3,6 @@ GoogleDriveHipchat::Application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
-  resources :hipchat_rooms, only: [:new, :create]
-  resources :g_drive_resources, only: [:new, :create]
+  resources :hipchat_rooms, only: [:new, :create, :show]
+  resources :g_drive_resources, only: [:new, :create, :show]
 end
