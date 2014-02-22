@@ -1,45 +1,50 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
+ruby '2.0.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
-
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
-# Use SCSS for stylesheets
+gem 'bootstrap-sass-rails', '3.0.0.3'
+gem 'bcrypt-ruby', '3.0.0'
+gem 'nokogiri', '1.5.9'
+gem 'faker', '1.1.2'
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
+gem 'annotate', '>=2.5.0'
 gem 'sass-rails', '~> 4.0.0'
+gem 'uglifier', '2.1.1'
+gem 'jquery-rails', '2.2.1'
+gem 'turbolinks', '1.1.1'
+gem 'jbuilder', '1.0.2'
 
-# Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'pg', '0.17.0'
 
-# Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+group :development, :test do
+  gem 'pry', '0.9.12.2'
+  gem 'pry-rails', '0.3.2'
+  gem 'awesome_print', '1.2.0'
+  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'better_errors', '1.0.1'
+  gem 'quiet_assets', '1.0.2'
+  gem 'bullet', '4.7.1'
+  gem 'debugger', '1.6.3'
+  gem 'hirb', '0.7.1'
+  gem 'airbrake', '3.1.14'
 
-# See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
-
-# Use jquery as the JavaScript library
-gem 'jquery-rails'
-
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.2'
-
-group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
-  gem 'sdoc', require: false
+  gem 'rails_best_practices', '1.14.4'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+group :test do
+  gem 'rspec-rails', '2.13.1'
+  gem 'selenium-webdriver', '2.0.0'
+  gem 'capybara', '2.1.0'
+  gem 'factory_girl_rails', '4.2.0'
+  gem 'cucumber-rails', '1.3.0', :require => false
+  gem 'database_cleaner', github: 'bmabey/database_cleaner'
+end
 
-# Use unicorn as the app server
-# gem 'unicorn'
+group :doc do
+  gem 'sdoc', '0.3.20', require: false
+end
 
-# Use Capistrano for deployment
-# gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :production do
+  gem 'rails_12factor'
+end
