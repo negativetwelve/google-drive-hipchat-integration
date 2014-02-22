@@ -1,0 +1,2 @@
+module HipchatRoomsHelper
+end

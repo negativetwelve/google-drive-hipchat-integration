@@ -1,0 +1,2 @@
+module GDriveResourcesHelper
+end
