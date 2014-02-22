@@ -4,6 +4,13 @@
 <% if user_signed_in? %>
   Signed in as <%= current_user.name %>. Not you?
   <%= link_to "Sign out", destroy_user_session_path,:method => :delete %>
+
+  <div class="user-actions">
+    <%= link_to "Create HipChat Room", new_hipchat_room_path  %><br>
+    <%= link_to "Create Google Drive Resource", new_g_drive_resource_path %><br>
+  </div>
+
+
 <% else %>
   <%= link_to "Sign up", new_user_registration_path %> or
   <%= link_to "Sign in", new_user_session_path %>
