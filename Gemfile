@@ -23,6 +23,7 @@ gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 gem 'httparty', '0.13.0'
+gem 'hipchat-api'
 
 group :development, :test do
   gem 'pry', '0.9.12.2'
