@@ -23,11 +23,11 @@ class GDriveResourcesController < ApplicationController
     url = "https://www.googleapis.com/drive/v2/files/#{params[:resource]}/watch"
     puts url
     body = {
-      "id": "test",
-      "type": "web_hook",
-      "address": "https://drivechat.herokuapp.com/resources/notification"
-    }
-    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}"}, body: body)
+      "id" => "test",
+      "type" => "web_hook",
+      "address" => "https://drivechat.herokuapp.com/resources/notification"
+    }.to_json
+    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}", 'Content-Type' => 'application/json', 'Accept' => 'application/json'}, body: body)
     puts "RESPONSE:"
     puts response
     redirect_to root_path
