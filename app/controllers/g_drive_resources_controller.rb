@@ -6,6 +6,7 @@ class GDriveResourcesController < ApplicationController
 
   def create
     @resource = GDriveResource.new(g_drive_resource_params)
+    @resource.uuid = SecureRandom.uuid
     if @resource.save
       redirect_to @resource
     else
@@ -18,12 +19,13 @@ class GDriveResourcesController < ApplicationController
   end
 
   def watch
+    @resource = GDriveResource.find(params[:id])
     params[:resource] = "18BJCrSclefptfkAiZlYZlMpdV-AYcVIpiIuKywDyKWM"
     params[:resource] = "0B9RMkUtrwoqXQllnbHk3YzRqZjg"
-    url = "https://www.googleapis.com/drive/v2/files/#{params[:resource]}/watch"
+    url = "https://www.googleapis.com/drive/v2/files/#{@resource.resource_path}/watch"
     puts url
     body = {
-      "id" => "test",
+      "id" => @resource.uuid,
       "type" => "web_hook",
       "address" => "https://drivechat.herokuapp.com/resources/notification"
     }.to_json
