@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :hipchat_rooms
 
   def self.find_for_google_oauth2(access_token, signed_in_resource=nil)
+    auth_token = access_token.credentials.token
     data = access_token.info
     user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
     if user
@@ -21,6 +22,7 @@ class User < ActiveRecord::Base
           email: data["email"],
           uid: access_token.uid,
           password: Devise.friendly_token[0,20],
+          auth_token: auth_token,
         )
       end
     end

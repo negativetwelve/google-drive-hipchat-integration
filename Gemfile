@@ -22,6 +22,8 @@ gem 'devise', '~> 3.2.1'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
+gem 'httparty', '0.13.0'
+
 group :development, :test do
   gem 'pry', '0.9.12.2'
   gem 'pry-rails', '0.3.2'

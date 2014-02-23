@@ -17,6 +17,15 @@ class GDriveResourcesController < ApplicationController
     @resource = GDriveResource.find(params[:id])
   end
 
+  def watch
+    params[:resource] = "18BJCrSclefptfkAiZlYZlMpdV-AYcVIpiIuKywDyKWM"
+    url = "https://www.googleapis.com/drive/v2/files/#{params[:resource]}/watch"
+    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}"})
+    puts "RESPONSE:"
+    puts response
+    redirect_to root_path
+  end
+
   private
 
     def g_drive_resource_params
