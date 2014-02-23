@@ -19,11 +19,22 @@ class GDriveResourcesController < ApplicationController
 
   def watch
     params[:resource] = "18BJCrSclefptfkAiZlYZlMpdV-AYcVIpiIuKywDyKWM"
+    params[:resource] = "0B9RMkUtrwoqXQllnbHk3YzRqZjg"
     url = "https://www.googleapis.com/drive/v2/files/#{params[:resource]}/watch"
-    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}"})
+    puts url
+    body = {
+      "id": "test",
+      "type": "web_hook",
+      "address": "https://drivechat.herokuapp.com/resources/notification"
+    }
+    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}"}, body: body)
     puts "RESPONSE:"
     puts response
     redirect_to root_path
+  end
+
+  def notification
+    puts params
   end
 
   private

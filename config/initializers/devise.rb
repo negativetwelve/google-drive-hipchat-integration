@@ -23,7 +23,11 @@ Devise.setup do |config|
 
 
   require 'omniauth-google-oauth2'
-  config.omniauth :google_oauth2, ENV["GOOGLE_APP_ID"], ENV["GOOGLE_APP_SECRET"], { access_type: "offline", approval_prompt: "" }
+  config.omniauth :google_oauth2, ENV["GOOGLE_APP_ID"], ENV["GOOGLE_APP_SECRET"], {
+    access_type: "offline",
+    approval_prompt: "",
+    scope: "userinfo.email, userinfo.profile, drive"
+  }
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
