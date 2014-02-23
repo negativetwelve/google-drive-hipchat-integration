@@ -35,6 +35,7 @@ class GDriveResourcesController < ApplicationController
 
   def notification
     puts params
+    redirect_to root_path
   end
 
   private
