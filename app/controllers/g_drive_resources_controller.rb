@@ -1,4 +1,5 @@
 class GDriveResourcesController < ApplicationController
+  protect_from_forgery except: :notification
 
   def new
     @resource = GDriveResource.new
