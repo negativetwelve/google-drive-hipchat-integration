@@ -8,9 +8,9 @@
   <div class="user-actions">
     <%= link_to "Create HipChat Room", new_hipchat_room_path  %><br>
     <%= link_to "Create Google Drive Resource", new_g_drive_resource_path %><br>
-    <%= button_to "Request", watch_g_drive_resource_path(id: 1) %>
+    <%= button_to "Watch", watch_g_drive_resource_path(id: 1) %><br>
+    <%= button_to "Stop Watching", stop_watching_g_drive_resource_path(id: 1) %>
   </div>
-
 
 <% else %>
   <%= link_to "Sign up", new_user_registration_path %> or
