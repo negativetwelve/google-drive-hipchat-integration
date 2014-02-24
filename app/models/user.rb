@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
     auth_token = access_token.credentials.token
     data = access_token.info
     user = User.where(:provider => access_token.provider, :uid => access_token.uid ).first
-    if user
+    user.auth_token = auth_token
+    if user && user.save
       return user
     else
       registered_user = User.where(:email => access_token.info.email).first
-      if registered_user
+      registered_user.auth_token = auth_token
+      if registered_user && registered_user.save
         return registered_user
       else
         user = User.create(name: data["name"],
