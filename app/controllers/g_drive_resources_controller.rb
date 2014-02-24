@@ -49,7 +49,7 @@ class GDriveResourcesController < ApplicationController
     room_id = @hipchat_room.room_id
 
     title = "File was updated: #{@resource.resource_path}"
-    hipchat_api.rooms_message(room_id, 'Google Drive', title, notify=1, color='orange', message_format='html')
+    hipchat_api.rooms_message(room_id, 'Google Drive', title, notify=1, color='green', message_format='html')
 
     redirect_to root_path
   end
