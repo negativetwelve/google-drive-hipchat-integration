@@ -43,7 +43,7 @@ class GDriveResourcesController < ApplicationController
     body = {
       "id" => @resource.uuid,
       "resourceId" => @resource.resource_id
-    }
+    }.to_json
     response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}", "Content-Type" => "application/json", "Accept" => "application/json"}, body: body)
     puts "RESPONSE:"
     puts response
