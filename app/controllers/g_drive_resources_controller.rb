@@ -36,6 +36,20 @@ class GDriveResourcesController < ApplicationController
     redirect_to root_path
   end
 
+  def stop_watching
+    @resource = GDriveResource.find(params[:id])
+    url = "https://www.googleapis.com/drive/v2/channels/stop"
+    puts url
+    body = {
+      "id" => @resource.uuid,
+      "resourceId" => @resource.resource_id
+    }
+    response = HTTParty.post(url, :headers => {"Authorization" => "OAuth #{current_user.auth_token}", "Content-Type" => "application/json", "Accept" => "application/json"}, body: body)
+    puts "RESPONSE:"
+    puts response
+    redirect_to root_path
+  end
+
   def notification
     uuid = request.headers["HTTP_X_GOOG_CHANNEL_ID"]
     resource_id = request.headers["HTTP_X_GOOG_RESOURCE_ID"]
