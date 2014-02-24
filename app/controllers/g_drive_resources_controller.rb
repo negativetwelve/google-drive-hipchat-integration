@@ -39,9 +39,13 @@ class GDriveResourcesController < ApplicationController
   def notification
     uuid = request.headers["HTTP_X_GOOG_CHANNEL_ID"]
     resource_id = request.headers["HTTP_X_GOOG_RESOURCE_ID"]
+    state = request.headers["HTTP_X_GOOG_RESOURCE_STATE"]
+    resource_changed = request.headers["HTTP_X_GOOG_CHANGED"]
 
     puts uuid
     puts resource_id
+    puts state
+    puts resource_changed
 
     @resource = GDriveResource.find_by_uuid(uuid)
     @hipchat_room = @resource.hipchat_room
