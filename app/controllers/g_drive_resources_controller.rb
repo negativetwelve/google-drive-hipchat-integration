@@ -37,18 +37,16 @@ class GDriveResourcesController < ApplicationController
   end
 
   def notification
-    request.headers.each do |header|
-      puts header[0]
-      puts header[1]
-    end
+    uuid = request.headers["HTTP_X_GOOG_CHANNEL_ID"]
+    resource_id = request.headers["HTTP_X_GOOG_RESOURCE_ID"]
 
-#    @resource = GDriveResource.find_by_uuid(params[:uuid])
-#    @hipchat_room = @resource.hipchat_room
-#    hipchat_api = HipChat::API.new(@hipchat_room.api_token)
-#    room_id = @hipchat_room.room_id
+    @resource = GDriveResource.find_by_uuid(uuid)
+    @hipchat_room = @resource.hipchat_room
+    hipchat_api = HipChat::API.new(@hipchat_room.api_token)
+    room_id = @hipchat_room.room_id
 
-#    title = "File was updated: #{@resource.resource_path}"
-#    hipchat_api.rooms_message(room_id, 'Google Drive', title, notify=1, color='orange', message_format='html')
+    title = "File was updated: #{@resource.resource_path}"
+    hipchat_api.rooms_message(room_id, 'Google Drive', title, notify=1, color='orange', message_format='html')
 
     redirect_to root_path
   end
