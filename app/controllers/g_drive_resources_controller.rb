@@ -40,6 +40,9 @@ class GDriveResourcesController < ApplicationController
     uuid = request.headers["HTTP_X_GOOG_CHANNEL_ID"]
     resource_id = request.headers["HTTP_X_GOOG_RESOURCE_ID"]
 
+    puts uuid
+    puts resource_id
+
     @resource = GDriveResource.find_by_uuid(uuid)
     @hipchat_room = @resource.hipchat_room
     hipchat_api = HipChat::API.new(@hipchat_room.api_token)
